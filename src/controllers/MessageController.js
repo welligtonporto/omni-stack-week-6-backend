@@ -9,7 +9,7 @@ class MessageController {
       userId: req.body.userId
     });
 
-    chat.messages.push(message);
+    chat.messages.push({ ...message });
 
     await chat.save();
 
