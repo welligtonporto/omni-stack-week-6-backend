@@ -2,7 +2,7 @@ const Chat = require("../models/Chat");
 
 class ChatController {
   async store(req, res) {
-    const chat = await Chat.create();
+    const chat = await Chat.create(req.body);
 
     return res.json(chat);
   }
