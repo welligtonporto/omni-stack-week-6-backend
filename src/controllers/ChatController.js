@@ -8,7 +8,10 @@ class ChatController {
   }
 
   async show(req, res) {
-    const chat = await Chat.findById(req.params.id);
+    const chat = await Chat.findById(req.params.id).populate({
+      path: "messages",
+      options: { sort: { createdAt: -1 } }
+    });
 
     return res.json(chat);
   }
