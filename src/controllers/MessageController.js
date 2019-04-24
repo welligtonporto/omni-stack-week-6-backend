@@ -4,12 +4,9 @@ const Chat = require("../models/Chat");
 class MessageController {
   async store(req, res) {
     const chat = await Chat.findById(req.params.id);
-    const message = await Message.create({
-      message: req.body.message,
-      userId: req.body.userId
-    });
+    const message = await Message.create(req.body);
 
-    chat.messages.push({ ...message });
+    chat.messages.push(message);
 
     await chat.save();
 
