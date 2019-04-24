@@ -5,7 +5,8 @@ class MessageController {
   async store(req, res) {
     const chat = await Chat.findById(req.params.id);
     const message = await Message.create({
-      message: req.message
+      message: req.body.message,
+      userId: req.body.userId
     });
 
     chat.messages.push(message);
